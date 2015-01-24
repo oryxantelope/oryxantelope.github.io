@@ -1,10 +1,10 @@
 ---
 layout: page
-title: ZHAO XING's Blog
+title: Oryx Antelope's Blog
 ---
 {% include JB/setup %}
 
-This Blog is power by [Github Pages](https://pages.github.com) with [Jekyll Bootstrap](http://jekyllbootstrap.com)
+This Blog is power by [Github Pages](https://pages.github.com) with [Jekyll Bootstrap](http://jekyllbootstrap.com).
 
 ###Blog Posts
 
