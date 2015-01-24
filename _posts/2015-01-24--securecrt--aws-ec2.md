@@ -29,6 +29,7 @@ AWS Instance 默认用密钥的方式来认证：
 
 7.打开连接即可登录该实例。
 
+
 PS:linux 上 SSH 命令可直接登录 AWS EC2 实例，命令如下：
 
 	$ ssh -i xxx.pem ec2-user@{IP/hostname}
