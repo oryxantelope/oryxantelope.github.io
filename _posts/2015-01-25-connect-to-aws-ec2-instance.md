@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SSH 连接 AWS EC2"
+title: "SSH 连接 AWS EC2 实例"
 description: ""
 category: tech
 tags: [AWS]
