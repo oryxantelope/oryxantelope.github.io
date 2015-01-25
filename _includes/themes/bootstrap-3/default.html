@@ -103,7 +103,7 @@
         $("#gotop").click(function(e) {
           $('body,html').animate({scrollTop:0},1000);
         });
-        $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat -70px 0px");
+        $("#gotop").css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat -70px 0px");
         $("#gotop").mouseover(function(e) {
           $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat 0px 0px");
         });
