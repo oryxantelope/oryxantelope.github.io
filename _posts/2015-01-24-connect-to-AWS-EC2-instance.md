@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "SSH 连接 AWS EC2"
-description: ""
+title: "connect to AWS EC2 instance"
+description: "SSH 连接 AWS EC2"
 category: tech
 tags: [AWS]
 -----------
