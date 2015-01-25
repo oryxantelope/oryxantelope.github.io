@@ -29,6 +29,7 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
 
 在 **CentOS 7** 之前，自启动服务通过 **init.d** 脚本来实现，样例如下([原始链接](http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/))：
 
+    {% highlight bash linenos %}
     #!/bin/bash
     # chkconfig: 2345 20 80
     # description: myapp daemon
@@ -92,6 +93,7 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
             echo "Usage: $0 {status|start|stop|restart}"
             exit 1
     esac
+    {% endhighlight %}
 
 *   第 3 行 ` # chkconfig: 2345 20 80` 中 2345 表示**启动级别**，20 表示服务**启动顺序**，80 表示服务**停止顺序**。顺序由数字从小到大依次执行。
 
@@ -138,7 +140,7 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
 *  第 47 行，HUP 信号 代号是 1，常见的其他信号如下：
         
         Signal     Value     Action   Comment
-        ---------------------------------------------------------------------
+        ──────────────────────────────────────────────────────────────────────
         SIGHUP        1       Term    Hangup detected on controlling terminal
                                       or death of controlling process
         SIGINT        2       Term    Interrupt from keyboard
@@ -171,10 +173,11 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
 
 >注：为了向后兼容，旧的 service 命令在 CentOS 7 中仍然可用，它会重定向所有命令到新的 systemctl 工具。
 
-每一个服务以 .service 结尾，一般会分为3部分：[Unit]、[Service] 和 [Install]。
+每一个服务以 .service 结尾，一般会分为3部分：\[Unit\]、\[Service\] 和 \[Install\]。
 
 实例代码如下：
 
+    {% highlight bash linenos %}
     [Unit]
     Description=app
     After=network.target remote-fs.target nss-lookup.target
@@ -189,12 +192,13 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
      
     [Install]
     WantedBy=multi-user.target
+    {% endhighlight %}
 
-[Unit] 部分主要是对这个服务的说明，内容包括Description和After，Description用于描述服务，After用于描述服务类别。
+\[Unit\] 部分主要是对这个服务的说明，内容包括Description和After，Description用于描述服务，After用于描述服务类别。
 
-[Service] 部分是服务的关键，是服务的一些具体运行参数的设置，这里 `Type=forking` 是后台运行的形式，PIDFile 为存放PID的文件路径，ExecStart 为服务的具体运行命令，ExecReload 为重启命令，ExecStop 为停止命令，`PrivateTmp=True` 表示给服务分配独立的临时空间，注意：[Service] 部分的启动、重启、停止命令全部要求使用绝对路径，使用相对路径则会报错！
+\[Service\] 部分是服务的关键，是服务的一些具体运行参数的设置，这里 `Type=forking` 是后台运行的形式，PIDFile 为存放PID的文件路径，ExecStart 为服务的具体运行命令，ExecReload 为重启命令，ExecStop 为停止命令，`PrivateTmp=True` 表示给服务分配独立的临时空间，注意：\[Service\] 部分的启动、重启、停止命令全部要求使用绝对路径，使用相对路径则会报错！
 
-[Install] 部分是服务安装的相关设置，可设置为多用户的.
+\[Install\] 部分是服务安装的相关设置，可设置为多用户的.
 
 服务脚本按照上面编写完成后，以 754 的权限保存在 /usr/lib/systemd/system 目录下，这时就可以利用 systemctl 进行配置了.
 
