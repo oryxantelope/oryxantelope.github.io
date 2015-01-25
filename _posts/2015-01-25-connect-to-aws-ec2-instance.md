@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "connect to AWS EC2 instance"
-description: "SSH 连接 AWS EC2"
+title: "SSH 连接 AWS EC2"
+description: ""
 category: tech
 tags: [AWS]
 ---
@@ -49,7 +49,9 @@ AWS Instance 默认用密钥对的方式来认证。
 
 
 ##Official References:
+
 [1] [access aws ec2 instance in Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+
 [2] [access aws ec2 instance by putty](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
 
 
