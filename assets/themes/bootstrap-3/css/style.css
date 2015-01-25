@@ -47,7 +47,6 @@ h1, h2, h3, h4 {
     position:fixed;
     right:50px;
     bottom:50px;
-    background:url({{ ASSET_PATH }}/images/gotop.png) no-repeat -70px 0px;    
 }
 
 /* posts index */

@@ -106,9 +106,7 @@
         $("#gotop").mouseover(function(e) {
           $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat 0px 0px");
         });
-        $("#gotop").mouseout(function(e) {
-          $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat -70px 0px");
-        });
+        $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat -70px 0px");
         $(window).scroll(function(e) {
           if($(window).scrollTop()>100)
             $("#gotop").fadeIn(1000);
