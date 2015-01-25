@@ -4,7 +4,7 @@ title: "connect to AWS EC2 instance"
 description: "SSH 连接 AWS EC2"
 category: tech
 tags: [AWS]
------------
+---
 {% include JB/setup %}
 
 AWS 创建实例时会提示创建一个key pair，此时需要下载该 xxx.pem的密钥文件到本地硬盘。
