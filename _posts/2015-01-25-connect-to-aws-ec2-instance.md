@@ -11,8 +11,6 @@ AWS 创建实例时会提示创建一个key pair，此时需要下载该 xxx.pem
 
 AWS Instance 默认用密钥对的方式来认证。
 
-[TOC]
-
 ### 通过 SecureCRT 使用 .pem 登陆的方式
 
 [How-to : Connect to Amazon EC2 Linux AMI using SecureCRT ](http://blog.skufel.net/2012/09/how-to-connect-to-amazon-ec2-linux-ami-using-securecrt/)
@@ -48,10 +46,10 @@ AWS Instance 默认用密钥对的方式来认证。
 	$ ssh -i xxx.pem ec2-user@{IP/hostname}
 
 
-##Official References:
+### Official References
 
-[1] [access aws ec2 instance in Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+\[1\]  [access aws ec2 instance in Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
 
-[2] [access aws ec2 instance by putty](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
+\[2\]  [access aws ec2 instance by putty](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
 
 

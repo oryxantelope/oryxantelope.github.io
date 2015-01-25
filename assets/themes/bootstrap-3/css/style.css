@@ -21,7 +21,23 @@ h1, h2, h3, h4 {
   /*background-color: #fdcd60;*/
 }
 
-
+/* toc */
+#toc {
+  margin-bottom: 20px;
+}
+.clickable-header {
+  cursor:pointer;
+}
+.clickable-header:hover {
+  text-decoration:underline;
+}
+.top-level-header {
+  display:inline;
+}
+.back-to-top {
+  margin-left:5px;
+  cursor:pointer;
+}
 
 /* posts index */
 .post > h3.title {
