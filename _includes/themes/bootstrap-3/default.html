@@ -86,6 +86,8 @@
         </p>
       </div>
     </div>
+  
+    <div id="gotop"></div>
 
     {% include JB/analytics %}
 
@@ -96,8 +98,23 @@
     <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ ASSET_PATH }}/js/toc.js"></script>
     <script type="text/javascript">
-      $(document).ready(function() {
+      $(function() {
         $('#toc').toc({ noBackToTopLinks: true });
+        $("#gotop").click(function(e) {
+          $('body,html').animate({scrollTop:0},1000);
+        });
+        $("#gotop").mouseover(function(e) {
+          $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat 0px 0px");
+        });
+        $("#gotop").mouseout(function(e) {
+          $(this).css("background","url({{ ASSET_PATH }}/images/gotop.png) no-repeat -70px 0px");
+        });
+        $(window).scroll(function(e) {
+          if($(window).scrollTop()>100)
+            $("#gotop").fadeIn(1000);
+          else
+            $("#gotop").fadeOut(1000);
+        });
       });
     </script>
   </body>
