@@ -19,7 +19,9 @@
     <link href="{{ ASSET_PATH }}/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
     <!-- pygments -->
     <link href="{{ ASSET_PATH }}/css/pygments.css" rel="stylesheet">   
- 
+    <!-- prettify -->
+    <link href="{{ ASSET_PATH }}/prettify/prettify.css" rel="stylesheet"> 
+
     <!-- Custom styles -->
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
@@ -99,9 +101,12 @@
     <script src="{{ ASSET_PATH }}/jquery/1.10.2/jquery.min.js"></script>
     <script src="{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ ASSET_PATH }}/js/toc.js"></script>
+    <script src="{{ ASSET_PATH }}/prettify/prettify.js"></script>
     <script type="text/javascript">
       $(function() {
+        // table of content
         $('#toc').toc({ noBackToTopLinks: true });
+        // go top icon
         $("#gotop").click(function(e) {
           $('body,html').animate({scrollTop:0},1000);
         });
@@ -118,6 +123,9 @@
           else
             $("#gotop").fadeOut(1000);
         });
+        //prettify for syntax highlight
+        $("pre").addClass("prettyprint linenums");
+        prettyPrint();
       });
     </script>
   </body>

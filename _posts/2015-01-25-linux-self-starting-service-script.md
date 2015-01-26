@@ -31,8 +31,6 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
 
 点击[这里]({{ site.url }}/assets/downloads/myapp)下载如下代码
 
-{% highlight bash linenos %}    
-
     #!/bin/bash
     # chkconfig: 2345 20 80
     # description: myapp daemon
@@ -96,8 +94,6 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
             echo "Usage: $0 {status|start|stop|restart}"
             exit 1
     esac
-
-{% endhighlight %}
 
 *   第 3 行 `# chkconfig: 2345 20 80` 中 2345 表示**启动级别**，20 表示服务**启动顺序**，80 表示服务**停止顺序**。顺序由数字从小到大依次执行。
 
@@ -181,8 +177,6 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
 
 实例代码如下：
 
-{% highlight bash %}    
-
     [Unit]
     Description=app
     After=network.target remote-fs.target nss-lookup.target
@@ -197,8 +191,6 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
     
     [Install]
     WantedBy=multi-user.target
-
-{% endhighlight %}
 
 \[Unit\] 部分主要是对这个服务的说明，内容包括Description和After，Description用于描述服务，After用于描述服务类别。
 
