@@ -29,7 +29,7 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
 
 在 **CentOS 7** 之前，自启动服务通过 **init.d** 脚本来实现，样例如下([原始链接](http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/))：
 
-    {% highlight bash linenos %}    
+    {% highlight bash linenos=table %}    
     #!/bin/bash
     # chkconfig: 2345 20 80
     # description: myapp daemon
@@ -177,7 +177,7 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
 
 实例代码如下：
 
-    {% highlight bash linenos %}    
+    {% highlight bash linenos=table %}    
     [Unit]
     Description=app
     After=network.target remote-fs.target nss-lookup.target
