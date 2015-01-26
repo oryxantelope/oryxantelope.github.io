@@ -29,8 +29,6 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
 
 在 **CentOS 7** 之前，自启动服务通过 **init.d** 脚本来实现，样例如下([原始链接](http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/))：
 
-*点击[这里]({{ site.url }}/assets/downloads/myapp)下载如下代码*
-
     #!/bin/bash
     # chkconfig: 2345 20 80
     # description: myapp daemon
