@@ -179,24 +179,22 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
 
 实例代码如下：
 
-    {% highlight bash linenos %}
-    
-    [Unit]
-    Description=app
-    After=network.target remote-fs.target nss-lookup.target
-     
-    [Service]
-    Type=forking
-    PIDFile=/node.js/pid
-    ExecStart=/usr/local/bin/app start /node.js/xxx/bin/www
-    ExecReload=/usr/local/bin/app restart /node.js/xxx/bin/www
-    ExecStop=/usr/local/bin/app stop /node.js/xxx/bin/www
-    PrivateTmp=true
-     
-    [Install]
-    WantedBy=multi-user.target
-    
-    {% endhighlight %}
+{% highlight bash linenos %}
+[Unit]
+Description=app
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/node.js/pid
+ExecStart=/usr/local/bin/app start /node.js/xxx/bin/www
+ExecReload=/usr/local/bin/app restart /node.js/xxx/bin/www
+ExecStop=/usr/local/bin/app stop /node.js/xxx/bin/www
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+{% endhighlight %}
 
 \[Unit\] 部分主要是对这个服务的说明，内容包括Description和After，Description用于描述服务，After用于描述服务类别。
 
