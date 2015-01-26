@@ -29,70 +29,74 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
 
 在 **CentOS 7** 之前，自启动服务通过 **init.d** 脚本来实现，样例如下([原始链接](http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/))：
 
+点击[这里]({{ site.url }}/assets/downloads/myapp)下载如下代码
+
 {% highlight bash linenos %}    
-#!/bin/bash
-# chkconfig: 2345 20 80
-# description: myapp daemon
-# processname: myapp
 
-DAEMON_PATH="/home/pkusei/myapp"
-
-DAEMON=myapp
-DAEMONOPTS="-my opts"
-
-NAME=myapp
-DESC="My daemon description"
-PIDFILE=/var/run/$NAME.pid
-SCRIPTNAME=/etc/init.d/$NAME
-
-case "$1" in
-start)
-        printf "%-50s" "Starting $NAME..."
-        cd $DAEMON_PATH
-        PID=`$DAEMON $DAEMONOPTS > /dev/null 2>&1 & echo $!`
-        #echo "Saving PID" $PID " to " $PIDFILE
-        if [ -z $PID ]; then
-            printf "%s\n" "Fail"
-        else
-            echo $PID > $PIDFILE
-            printf "%s\n" "Ok"
-        fi
-;;
-status)
-        printf "%-50s" "Checking $NAME..."
-        if [ -f $PIDFILE ]; then
-            PID=`cat $PIDFILE`
-            if [ -z "`ps axf | grep ${PID} | grep -v grep`" ]; then
-                printf "%s\n" "Process dead but pidfile exists"
-            else
-                echo "Running"
-            fi
-        else
-            printf "%s\n" "Service not running"
-        fi
-;;
-stop)
-        printf "%-50s" "Stopping $NAME"
-            PID=`cat $PIDFILE`
+    #!/bin/bash
+    # chkconfig: 2345 20 80
+    # description: myapp daemon
+    # processname: myapp
+    
+    DAEMON_PATH="/home/pkusei/myapp"
+    
+    DAEMON=myapp
+    DAEMONOPTS="-my opts"
+    
+    NAME=myapp
+    DESC="My daemon description"
+    PIDFILE=/var/run/$NAME.pid
+    SCRIPTNAME=/etc/init.d/$NAME
+    
+    case "$1" in
+    start)
+            printf "%-50s" "Starting $NAME..."
             cd $DAEMON_PATH
-        if [ -f $PIDFILE ]; then
-            kill -HUP $PID
-            printf "%s\n" "Ok"
-            rm -f $PIDFILE
-        else
-            printf "%s\n" "pidfile not found"
-        fi
-;;
+            PID=`$DAEMON $DAEMONOPTS > /dev/null 2>&1 & echo $!`
+            #echo "Saving PID" $PID " to " $PIDFILE
+            if [ -z $PID ]; then
+                printf "%s\n" "Fail"
+            else
+                echo $PID > $PIDFILE
+                printf "%s\n" "Ok"
+            fi
+    ;;
+    status)
+            printf "%-50s" "Checking $NAME..."
+            if [ -f $PIDFILE ]; then
+                PID=`cat $PIDFILE`
+                if [ -z "`ps axf | grep ${PID} | grep -v grep`" ]; then
+                    printf "%s\n" "Process dead but pidfile exists"
+                else
+                    echo "Running"
+                fi
+            else
+                printf "%s\n" "Service not running"
+            fi
+    ;;
+    stop)
+            printf "%-50s" "Stopping $NAME"
+                PID=`cat $PIDFILE`
+                cd $DAEMON_PATH
+            if [ -f $PIDFILE ]; then
+                kill -HUP $PID
+                printf "%s\n" "Ok"
+                rm -f $PIDFILE
+            else
+                printf "%s\n" "pidfile not found"
+            fi
+    ;;
+    
+    restart)
+            $0 stop
+            $0 start
+    ;;
+    
+    *)
+            echo "Usage: $0 {status|start|stop|restart}"
+            exit 1
+    esac
 
-restart)
-        $0 stop
-        $0 start
-;;
-
-*)
-        echo "Usage: $0 {status|start|stop|restart}"
-        exit 1
-esac
 {% endhighlight %}
 
 *   第 3 行 `# chkconfig: 2345 20 80` 中 2345 表示**启动级别**，20 表示服务**启动顺序**，80 表示服务**停止顺序**。顺序由数字从小到大依次执行。
@@ -177,21 +181,23 @@ Systemd 是一个 Linux 操作系统下的系统和服务管理器。它被设�
 
 实例代码如下：
 
-{% highlight bash linenos %}    
-[Unit]
-Description=app
-After=network.target remote-fs.target nss-lookup.target
+{% highlight bash %}    
 
-[Service]
-Type=forking
-PIDFile=/node.js/pid
-ExecStart=/usr/local/bin/app start /node.js/xxx/bin/www
-ExecReload=/usr/local/bin/app restart /node.js/xxx/bin/www
-ExecStop=/usr/local/bin/app stop /node.js/xxx/bin/www
-PrivateTmp=true
+    [Unit]
+    Description=app
+    After=network.target remote-fs.target nss-lookup.target
+    
+    [Service]
+    Type=forking
+    PIDFile=/node.js/pid
+    ExecStart=/usr/local/bin/app start /node.js/xxx/bin/www
+    ExecReload=/usr/local/bin/app restart /node.js/xxx/bin/www
+    ExecStop=/usr/local/bin/app stop /node.js/xxx/bin/www
+    PrivateTmp=true
+    
+    [Install]
+    WantedBy=multi-user.target
 
-[Install]
-WantedBy=multi-user.target
 {% endhighlight %}
 
 \[Unit\] 部分主要是对这个服务的说明，内容包括Description和After，Description用于描述服务，After用于描述服务类别。
