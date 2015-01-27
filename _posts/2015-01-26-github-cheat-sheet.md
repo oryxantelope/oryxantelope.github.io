@@ -9,7 +9,7 @@ tags: [Git, GitHub]
 
 [GitHub秘籍](http://git.io/sheet)收录了一些 Git 和 GitHub 非常酷同时又少有人知的功能。
 
-## Table of Contents
+##Table of Contents
 
 - [GitHub](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.md#github)
   - [Ignore Whitespace](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.md#ignore-whitespace)
@@ -71,7 +71,7 @@ tags: [Git, GitHub]
   - [Git Resources](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.md#git-resources)
     - [Git Books](https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.md#git-books)
 
-## 目录
+##目录
 
 - GitHub
   - 忽略空白字符变化
