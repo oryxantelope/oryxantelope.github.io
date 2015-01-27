@@ -161,6 +161,10 @@ PS：**/etc/rc.local** 是在系统初始化级别脚本运行之后再执行的
         SIGTTIN   21,21,26    Stop    Terminal input for background process
         SIGTTOU   22,22,27    Stop    Terminal output for background process
 
+可以用`chkconfig --list`列出所有的系统服务（包含在那个启动等级下自启动）。
+
+可以用`chkconfig --add myapp`增加所指定的系统服务，让chkconfig指令得以管理它，并同时在系统启动的叙述文件内增加相关数据。对应的，`chkconfig --del myapp`删除所指定的系统服务，不再由chkconfig指令管理，并同时在系统启动的叙述文件内删除相关数据。
+
 ##systemctl 脚本 
 
 RHEL/CentOS 7.0 中一个最主要的改变，就是切换到了 systemd 。它用于替代红帽企业版Linux前任版本中的 SysV 和 Upstart，对系统和服务进行管理。systemd 兼容 SysV 和 Linux 标准组的启动脚本。
