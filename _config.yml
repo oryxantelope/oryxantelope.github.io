@@ -128,10 +128,8 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
   
-
-
-gems :
+#gems :
   # Generates sitemap automatically
-  - jekyll-sitemap
+  #- jekyll-sitemap
 
-encoding : utf-8
+#encoding : utf-8
