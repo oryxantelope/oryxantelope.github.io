@@ -7,25 +7,25 @@ tags: [SVN, Apache]
 ---
 {% include JB/setup %}
 
-1. Ubuntu 下安装 SVN
+## 1.Ubuntu 下安装 SVN
 
 sudo apt-get install subversion
 
-2. http 方式访问
+## 2.http 方式访问
 
-2.1. 安装包
+### 2.1 安装包
 
     sudo apt-get install apache2 libapache2-svn
 
-2.2. 创建版本仓库
+### 2.2 创建版本仓库
 
     sudo svnadmin create /path-to-your-repository
 
-2.3. 授权 apache 读写
+### 2.3 授权 apache 读写
 
     sudo chown -R www-data:www-data /path-to-your-repository
 
-2.4. 修改 apache 相应配置文件
+### 2.4 修改 apache 相应配置文件
 
     sudo vim /etc/apache2/mods-available/dav_svn.conf
 
@@ -95,13 +95,13 @@ sudo apt-get install subversion
 
 配置文件最后一部分禁止匿名用户访问。
 
-2.5. 添加 SVN 用户
+### 2.5 添加 SVN 用户
 
     sudo htpasswd -c /var/lib/svn/conf/passwd username
 
 在相应文件中可以看到加密后的密码。如果没有安装 htpasswd, 需要按照提示安装 htpasswd。
 
-2.6 重启 apache
+### 2.6 重启 apache
 
     sudo service apache2 restart
 
