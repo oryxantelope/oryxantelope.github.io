@@ -7,11 +7,11 @@ tags: [SVN, Apache]
 ---
 {% include JB/setup %}
 
-## 1.Ubuntu 下安装 SVN
+## 1. Ubuntu 下安装 SVN
 
-sudo apt-get install subversion
+    sudo apt-get install subversion
 
-## 2.http 方式访问
+## 2. http 方式访问
 
 ### 2.1 安装包
 
