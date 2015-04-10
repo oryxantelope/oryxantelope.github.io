@@ -7,23 +7,23 @@ tags: [VPS, shadowsocks]
 ---
 {% include JB/setup %}
 
-## 1. 安装 CentOS 7 
+## 安装 CentOS 7 
 
-### 1.1. 配置启用 iptables 来代替 Firewalld
+### 配置启用 iptables 来代替 Firewalld
 
-#### 1.1.1. Disable Firewalld Service.
+#### Disable Firewalld Service.
 
     [root@rhel-centos7-tejas-barot-linux ~]# systemctl mask firewalld
 
-#### 1.1.2. Stop Firewalld Service.
+#### Stop Firewalld Service.
 
     [root@rhel-centos7-tejas-barot-linux ~]# systemctl stop firewalld
 
-#### 1.1.3. Install iptables service related packages.
+#### Install iptables service related packages.
 
     [root@rhel-centos7-tejas-barot-linux ~]# yum -y install iptables-services
 
-#### 1.1.4. Make sure service starts at boot:
+#### Make sure service starts at boot:
 
     [root@rhel-centos7-tejas-barot-linux ~]# systemctl enable iptables
 
@@ -31,7 +31,7 @@ tags: [VPS, shadowsocks]
     
     [root@rhel-centos7-tejas-barot-linux ~]# systemctl enable ip6tables
 
-#### 1.1.5. Now, Finally Let’s start the iptables services.
+#### Now, Finally Let’s start the iptables services.
 
     [root@rhel-centos7-tejas-barot-linux ~]# systemctl start iptables
 
@@ -41,15 +41,15 @@ tags: [VPS, shadowsocks]
 
 **Firewalld Service is now disabled and stop, You can use iptables.**
 
-### 1.2. 更改时区
+### 更改时区
 
     [root@rhel-centos7]# cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-## 2. 安装 Denyhosts 服务
+## 安装 Denyhosts 服务
 
 Denyhosts（[SourceForge](http://denyhosts.sourceforge.net/), [GitHub](https://github.com/denyhosts/denyhosts)）是一个Linux系统下阻止暴力破解SSH密码的软件，它的原理与DDoS Deflate类似，可以自动拒绝过多次数尝试SSH登录的IP地址，防止互联网上某些机器常年破解密码的行为，也可以防止黑客对SSH密码进行穷举。更多信息可见[README](https://github.com/denyhosts/denyhosts/blob/master/README.md)）。
 
-### 2.1. 安装
+### 安装
 
 可选的安装方式有源代码安装（Source Distribution）和二进制安装包安装（Binary Distribution），这里采用源代码安装。
 
@@ -90,7 +90,7 @@ Once you have edited the configuration and daemon control files make sure that t
     [root@rhel-centos7]# chown root daemon-control
     [root@rhel-centos7]# chmod 700 daemon-control
 
-### 2.2. Starting DenyHosts Automatically
+### Starting DenyHosts Automatically
 
 #### Method 1 (preferred)
 
@@ -111,19 +111,19 @@ Add an entry into the /etc/rc.local file:
 
      /path-to-your-denyhosts-folder/daemon-control start
 
-## 3. 安装 shadowsocks-go 服务
+## 安装 shadowsocks-go 服务
 
-### 3.1. 安装Go所需要的依赖库
+### 安装Go所需要的依赖库
 
     [root@rhel-centos7]# yum install mercurial git gcc
 
-### 3.2. 安装Go
+### 安装Go
 
     [root@rhel-centos7]# wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
     [root@rhel-centos7]# tar -zxvf go1.4.2.linux-amd64.tar.gz
     [root@rhel-centos7]# cd go
 
-### 3.3. 添加 Go 的环境变量
+### 添加 Go 的环境变量
 
 编辑 /etc/profile 文件，在最后添加如下行:
 
@@ -135,7 +135,7 @@ Add an entry into the /etc/rc.local file:
 
 然后运行 `go version` 查看是否安装成功,如果出现 `go version go1.2 …` 表示安装成功。
 
-### 3.4. 开始安装ShadowSocks-go版本
+### 开始安装ShadowSocks-go版本
 
     [root@rhel-centos7]# go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
 
@@ -294,7 +294,7 @@ If you have chkconfig installed you can then use it to ensure that shadowsocks r
 
 If you do not have chkconfig (or similar) installed you can either manually create the symlinks in /etc/rc2.d, /etc/rc3.d, /etc/rc5.d but that is beyond the scope of this document.
 
-### 3.4. 打开防火墙相应端口
+### 打开防火墙相应端口
 
 编辑 /etc/sysconfig/iptables 文件，在适当位置添加如下行：
 
@@ -305,7 +305,7 @@ If you do not have chkconfig (or similar) installed you can either manually crea
 
     [root@rhel-centos7]# service iptables restart
 
-## 4. 启动所有相关服务
+## 启动所有相关服务
 
 如果 VPS 可以暂时关机，则执行 `reboot` 重启即可。
 
@@ -316,7 +316,7 @@ If you do not have chkconfig (or similar) installed you can either manually crea
     [root@rhel-centos7]# service denyhosts start
     [root@rhel-centos7]# service shadowsocks start
 
-## 5. 其他 shadowsocks 公共代理的必要设置
+## 其他 shadowsocks 公共代理的必要设置
 
 见 [shadowsocks 公共代理的必要设置](https://gist.github.com/fqrouter/95c037f9a3ba196fd4dd).
 
