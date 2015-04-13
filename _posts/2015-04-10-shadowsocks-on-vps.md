@@ -7,6 +7,12 @@ tags: [VPS, shadowsocks]
 ---
 {% include JB/setup %}
 
+##　申请VPS
+
+目前有很多国外的 VPS 可用，如[Linode](https://www.linode.com/), [Digital Ocean](https://www.digitalocean.com/). 并且这些 VPS 都可以在网上找到相关优惠码。以 Digital Ocean 为例，通过[邀请链接](https://www.digitalocean.com/?refcode=9edd63d85b9b)注册并使用，可得 $10 的优惠，这来自 Digital Ocean 的 Referral Program. 此外，如果是学生，可以通过 GitHub 的 Student Pack 获得 $100 的优惠码。以 Digital Ocean 最便宜的配置 $5/Month，这些优惠可以使用一段不短的时间了。
+
+*Ps：VPS 一般需要信用卡验证/充值，当然为安全、方便起见，推荐使用PayPal。*
+
 ## 安装 CentOS 7 
 
 ### 配置启用 iptables 来代替 Firewalld
