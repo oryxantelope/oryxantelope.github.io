@@ -105,3 +105,6 @@ tags: [SVN, Apache]
 
     sudo service apache2 restart
 
+##reference
+
+\[1\] [linux下apache+SVN搭建完美版](http://www.cnblogs.com/fyfblog/archive/2011/06/12/2097138.html)
